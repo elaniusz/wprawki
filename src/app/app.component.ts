@@ -11,8 +11,8 @@ export class AppComponent {
   photoUrl = 'assets/images/mmm.jpg';
   isActive = false;
 
-zmienKolor() {
-  this.nameColor = this.nameColor === '#009999' ? 'red' : '#009999';
-}
+  zmienKolor() {
+    this.nameColor = this.nameColor === '#009999' ? 'red' : '#009999';
+  }
 
 }
