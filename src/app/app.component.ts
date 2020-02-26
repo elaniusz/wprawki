@@ -6,13 +6,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  name: string = 'Marek Michalik';
-  nameColor: string = '#009999';
-  photoUrl: string = 'assets/images/mmm.jpg';
-  isActive: boolean = false;
+  name = 'Marek Michalik';
+  nameColor = '#009999';
+  photoUrl = 'assets/images/mmm.jpg';
+  isActive = false;
 
-  changeIsActive() {
-    this.isActive = !this.isActive;
-  }
+zmienKolor() {
+  this.nameColor = this.nameColor === '#009999' ? 'red' : '#009999';
+}
 
 }
