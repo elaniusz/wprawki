@@ -6,5 +6,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'wprawki';
+  name: string = 'Marek Michalik';
+  nameColor: string = '#009999';
+  photoUrl: string = 'assets/images/mmm.jpg';
+  isActive: boolean = false;
+
+  changeIsActive() {
+    this.isActive = !this.isActive;
+  }
+
 }
