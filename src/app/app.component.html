@@ -1,5 +1,8 @@
-<h1 [style.color]="nameColor" [class.isActive]="isActive">{{ name.toUpperCase() }}</h1>
-<img [src]="photoUrl">
+<h1 [style.color]="nameColor" [class.isActive]="isActive">{{ person.name.toUpperCase() }}</h1>
+<p>O sobie: {{ person.description}}</p>
+<p>Wiek: {{person.age}}</p>
+<p>Adres: {{person.adress.city}}, {{person.adress.street}} {{person.adress.houseNumber}}</p>
+<img [src]="person.photoUrl">
 <button (click)="isActive = !isActive" type="button">Przełącz podkreślenie</button>
 <button (click)="zmienKolor()" type="button">Przełącz kolor</button>
-<input type="text" [(ngModel)]="name" [ngModelOptions]="{updateOn: 'blur'}" />
+<input type="text" [(ngModel)]="person.name" [ngModelOptions]="{updateOn: 'blur'}" />

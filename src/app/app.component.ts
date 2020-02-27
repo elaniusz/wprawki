@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Person } from './model';
 
 @Component({
   selector: 'app-root',
@@ -6,9 +7,19 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  name = 'Marek Michalik';
+  person: Person = {
+    name: 'Marek Michalik',
+    photoUrl: 'assets/images/mmm.jpg',
+    description: 'Coś o sobie trza napisać',
+    age: 39,
+    adress: {
+      street: 'Cieńków',
+      houseNumber: 20,
+      city: 'Wisła'
+    }
+  };
+
   nameColor = '#009999';
-  photoUrl = 'assets/images/mmm.jpg';
   isActive = false;
 
   zmienKolor() {
