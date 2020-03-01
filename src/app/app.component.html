@@ -1,8 +1,54 @@
-<h1 [style.color]="nameColor" [class.isActive]="isActive">{{ person.name.toUpperCase() }}</h1>
-<p>O sobie: {{ person.description}}</p>
-<p>Wiek: {{person.age}}</p>
-<p>Adres: {{person.adress.city}}, {{person.adress.street}} {{person.adress.houseNumber}}</p>
-<img [src]="person.photoUrl">
-<button (click)="isActive = !isActive" type="button">Przełącz podkreślenie</button>
-<button (click)="zmienKolor()" type="button">Przełącz kolor</button>
-<input type="text" [(ngModel)]="person.name" [ngModelOptions]="{updateOn: 'blur'}" />
+<nav class="navbar navbar-dark bg-secondary">
+    <ul class="nav bg-light">
+        <li class="nav-item">
+            <a class="nav-link active" href="#">Start</a>
+        </li>
+    </ul>
+</nav>
+<div class="container-fluid">
+    <div style="margin-top: 15px;">
+        <div class="card mb-3" style="max-width: 540px;">
+            <div class="row no-gutters">
+                <div class="col-md-4">
+                    <ng-container *ngIf="showPhoto; then photo else noPhoto"></ng-container>
+                    <ng-template #photo>
+                        <img [src]="person.photoUrl" class="card-img">
+                    </ng-template>
+                    <ng-template #noPhoto>
+                        <p>Zdjęcie ukryte</p>
+                    </ng-template>
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-title" [style.color]="nameColor" [class.isActive]="isActive">
+                            {{ person.name.toUpperCase() }}
+                        <ng-container [ngSwitch]=person.advenced>
+                            <ng-container *ngSwitchCase="Advenced.Poczatkujacy">*</ng-container>
+                            <ng-container *ngSwitchCase="Advenced.Sredniozaawansowany">**</ng-container>
+                            <ng-container *ngSwitchCase="Advenced.Zaawansowany">***</ng-container>
+                            <ng-container *ngSwitchDefault>Nieznany typ</ng-container>
+                        </ng-container>
+                        </h5>
+                        <p class="card-text">O sobie: {{ person.description}}</p>
+                        <p class="card-text">Wiek: {{person.age}}</p>
+                        <p class="card-text">Adres: {{person.adress.city}}, {{person.adress.street}}
+                            {{person.adress.houseNumber}}</p>                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row col-md-4" style="max-width: 540px;">
+        <div class="input-group mb-3">
+            <input type="text" [(ngModel)]="person.description" [ngModelOptions]="{updateOn: 'blur'}" class="form-control"
+                aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+        </div>
+        <div class="checkbox">
+            <label><input type="checkbox" [(ngModel)]="showPhoto"> Pokaz zdjęcie</label>
+        </div>
+    </div>
+    <button (click)="isActive = !isActive" type="button" style="margin-right: 10px;"
+        class="btn btn-outline-secondary">Przełącz
+        podkreślenie</button>
+    <button (click)="zmienKolor()" type="button" class="btn btn-outline-secondary">Przełącz kolor</button>
+</div>

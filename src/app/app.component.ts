@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Person } from './model';
+import { Person, Advenced } from './model';
 
 @Component({
   selector: 'app-root',
@@ -13,14 +13,17 @@ export class AppComponent {
     description: 'Coś o sobie trza napisać',
     age: 39,
     adress: {
-      street: 'Cieńków',
+      street: 'ul. Cieńków',
       houseNumber: 20,
       city: 'Wisła'
-    }
+    },
+    advenced: Advenced.Zaawansowany
   };
 
   nameColor = '#009999';
   isActive = false;
+  showPhoto = false;
+  Advenced = Advenced;
 
   zmienKolor() {
     this.nameColor = this.nameColor === '#009999' ? 'red' : '#009999';
