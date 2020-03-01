@@ -1,0 +1,11 @@
+<div class="container-fluid">
+    <div style="margin-top: 15px;" class="row col-md-6">
+        <select [(ngModel)]="person" class="form-control form-control-lg">
+            <option [ngValue]="null">Brak zawodnika</option>
+            <option *ngFor="let p of persons" [ngValue]="p">{{ p.name }}, {{ p.adress.city }} {{ p.adress.street }}
+                {{ p.adress.houseNumber }}</option>
+        </select>
+    </div>
+    
+</div>
+<app-person-detail [person]="person" (shift)="onShift($event )"></app-person-detail>

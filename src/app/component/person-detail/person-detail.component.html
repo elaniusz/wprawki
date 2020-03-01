@@ -1,0 +1,53 @@
+<div class="container-fluid" *ngIf="person">
+    <div style="margin-top: 15px;">
+        <div class="card mb-3">
+            <div class="row no-gutters">
+                <div class="col-md-10">
+                    <div class="card-body">
+                        <h5 class="card-title" [style.color]="nameColor" [class.isActive]="isActive">
+                            <button type="button" (click)="left()">&lt;</button>
+                            {{ person.name.toUpperCase() }}
+                            <ng-container [ngSwitch]=person.advenced>
+                                <ng-container *ngSwitchCase="Advenced.Poczatkujacy">*</ng-container>
+                                <ng-container *ngSwitchCase="Advenced.Sredniozaawansowany">**</ng-container>
+                                <ng-container *ngSwitchCase="Advenced.Zaawansowany">***</ng-container>
+                                <ng-container *ngSwitchDefault>Nieznany typ</ng-container>
+                            </ng-container>
+                            <button type="button" (click)="right()">&gt;</button>
+                        </h5>
+                        <p class="card-text" appHighlight>O sobie: {{ person.description}}</p>
+                        <p class="card-text">Wiek: {{person.age}}</p>
+                        <p class="card-text">Adres: {{person.adress.city}}, {{person.adress.street}}
+                            {{person.adress.houseNumber}}</p>
+                        <ul>
+                            <li *ngFor="let category of person.categories; let oddCategory = odd"
+                                [class.oddCategory]="oddCategory">{{category}} {{oddCategory}}</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <ng-container *ngIf="showPhoto; then photo else noPhoto"></ng-container>
+                    <ng-template #photo>
+                        <img [src]="person.photoUrl" class="card-img">
+                    </ng-template>
+                    <ng-template #noPhoto>
+                        <p>Zdjęcie ukryte</p>
+                    </ng-template>
+                    <div class="checkbox">
+                        <label><input type="checkbox" [(ngModel)]="showPhoto"> Pokaz zdjęcie</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row col-md-4" style="max-width: 540px;">
+        <div class="input-group mb-3">
+            <input type="text" [(ngModel)]="person.description" [ngModelOptions]="{updateOn: 'blur'}"
+                class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+        </div>
+    </div>
+    <button (click)="isActive = !isActive" type="button" style="margin-right: 10px;"
+        class="btn btn-outline-secondary">Przełącz
+        podkreślenie</button>
+    <button (click)="zmienKolor()" type="button" class="btn btn-outline-secondary">Przełącz kolor</button>
+</div>

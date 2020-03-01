@@ -12,7 +12,7 @@ export class HighlightDirective {
     this.element.nativeElement.style.backgroundColor = 'red';
   }
 
-  @HostListener('mouseleave ') cancelHightlight() {
+  @HostListener('mouseleave') cancelHightlight() {
     this.element.nativeElement.style.backgroundColor = null;
   }
 }
