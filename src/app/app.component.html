@@ -6,6 +6,15 @@
     </ul>
 </nav>
 <div class="container-fluid">
+<div style="margin-top: 15px;" class="row col-md-6">
+    <select [(ngModel)]="person" class="form-control form-control-lg">
+        <option [ngValue]="null">Brak zawodnika</option>
+        <option *ngFor="let p of persons" [ngValue]="p">{{ p.name }}, {{ p.adress.city}} {{ p.adress.street}} {{ p.adress.houseNumber}}</option>
+    </select>
+</div>
+</div>
+<div class="container-fluid" *ngIf="person">
+    
     <div style="margin-top: 15px;">
         <div class="card mb-3" style="max-width: 540px;">
             <div class="row no-gutters">
@@ -22,17 +31,20 @@
                     <div class="card-body">
                         <h5 class="card-title" [style.color]="nameColor" [class.isActive]="isActive">
                             {{ person.name.toUpperCase() }}
-                        <ng-container [ngSwitch]=person.advenced>
-                            <ng-container *ngSwitchCase="Advenced.Poczatkujacy">*</ng-container>
-                            <ng-container *ngSwitchCase="Advenced.Sredniozaawansowany">**</ng-container>
-                            <ng-container *ngSwitchCase="Advenced.Zaawansowany">***</ng-container>
-                            <ng-container *ngSwitchDefault>Nieznany typ</ng-container>
-                        </ng-container>
+                            <ng-container [ngSwitch]=person.advenced>
+                                <ng-container *ngSwitchCase="Advenced.Poczatkujacy">*</ng-container>
+                                <ng-container *ngSwitchCase="Advenced.Sredniozaawansowany">**</ng-container>
+                                <ng-container *ngSwitchCase="Advenced.Zaawansowany">***</ng-container>
+                                <ng-container *ngSwitchDefault>Nieznany typ</ng-container>
+                            </ng-container>
                         </h5>
                         <p class="card-text">O sobie: {{ person.description}}</p>
                         <p class="card-text">Wiek: {{person.age}}</p>
                         <p class="card-text">Adres: {{person.adress.city}}, {{person.adress.street}}
-                            {{person.adress.houseNumber}}</p>                        
+                            {{person.adress.houseNumber}}</p>
+                        <ul>
+                            <li *ngFor="let category of person.categories; let oddCategory = odd" [class.oddCategory]="oddCategory">{{category}} {{oddCategory}}</li>
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -40,8 +52,8 @@
     </div>
     <div class="row col-md-4" style="max-width: 540px;">
         <div class="input-group mb-3">
-            <input type="text" [(ngModel)]="person.description" [ngModelOptions]="{updateOn: 'blur'}" class="form-control"
-                aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+            <input type="text" [(ngModel)]="person.description" [ngModelOptions]="{updateOn: 'blur'}"
+                class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
         </div>
         <div class="checkbox">
             <label><input type="checkbox" [(ngModel)]="showPhoto"> Pokaz zdjęcie</label>

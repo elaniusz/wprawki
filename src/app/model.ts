@@ -5,6 +5,7 @@ export interface Person {
     age: number;
     adress: Adress;
     advenced: Advenced;
+    categories: string[];
 }
 
 export interface Adress {

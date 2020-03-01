@@ -7,7 +7,25 @@ import { Person, Advenced } from './model';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  person: Person = {
+
+persons: Person[] = [
+  {
+    name: 'Joanna Michalik',
+    photoUrl: 'assets/images/mmm.jpg',
+    description: 'Coś tam jest napisane',
+    age: 42,
+    adress: {
+      street: 'ul. Biała Wisełka',
+      houseNumber: 20,
+      city: 'Wisła'
+    },
+    advenced: Advenced.Zaawansowany,
+    categories: [
+      'rowerzysta',
+      'biegacz',
+    ]
+  },
+  {
     name: 'Marek Michalik',
     photoUrl: 'assets/images/mmm.jpg',
     description: 'Coś o sobie trza napisać',
@@ -17,8 +35,33 @@ export class AppComponent {
       houseNumber: 20,
       city: 'Wisła'
     },
-    advenced: Advenced.Zaawansowany
-  };
+    advenced: Advenced.Zaawansowany,
+    categories: [
+      'rowerzysta',
+      'biegacz',
+      'triatlon'
+    ]
+  },
+  {
+    name: 'Kunegunda Zubrzycka',
+    photoUrl: 'assets/images/mmm.jpg',
+    description: 'trza napisać',
+    age: 18,
+    adress: {
+      street: 'ul. Stokrotek',
+      houseNumber: 20,
+      city: 'Wisła'
+    },
+    advenced: Advenced.Zaawansowany,
+    categories: [
+      'rowerzysta',
+      'biegacz',
+      'triatlon'
+    ]
+  }
+];
+
+person: Person = null;
 
   nameColor = '#009999';
   isActive = false;
