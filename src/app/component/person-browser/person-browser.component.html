@@ -1,13 +1,20 @@
 <div class="container-fluid">
-    <div style="margin-top: 15px;" class="row col-md-6">
-        <select [(ngModel)]="person" class="form-control form-control-lg">
-            <option [ngValue]="null">Brak zawodnika</option>
-            <option *ngFor="let p of persons" [ngValue]="p">{{ p.name }}, {{ p.adress.city }} {{ p.adress.street }}
-                {{ p.adress.houseNumber }}</option>
-        </select>
+    <div style="margin-top: 15px;" class="row">
+        <div class="col-md-6">
+            <select [(ngModel)]="person" class="form-control form-control-lg">
+                <option [ngValue]="null">Brak zawodnika</option>
+                <option *ngFor="let p of persons" [ngValue]="p">{{ p.name }}, {{ p.adress.city }} {{ p.adress.street }}
+                    {{ p.adress.houseNumber }}</option>
+            </select>
+        </div>
+        <div class="col-md-6" *ngIf="person">
+            <button class="btn btn-outline-secondary" (click)="zmienKolor()" style="margin-right: 10px;">Zmień kolor osoby w komponencie
+                "detail..."</button>
+                <button class="btn btn-outline-secondary" (click)="podkreslenie()">Podkreślenie osoby w komponencie
+                    "detail..."</button>
+        </div>
     </div>
-    
 </div>
 <div *ngIf="person">
-<app-person-detail [person]="person" (shift)="onShift($event )"></app-person-detail>
+    <app-person-detail #details [person]="person" (shift)="onShift($event )"></app-person-detail>
 </div>

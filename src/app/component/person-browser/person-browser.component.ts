@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Person, Advenced } from 'src/app/model';
+import { PersonDetailComponent } from '../person-detail/person-detail.component';
 
 @Component({
   selector: 'app-person-browser',
@@ -7,6 +8,8 @@ import { Person, Advenced } from 'src/app/model';
   styleUrls: ['./person-browser.component.scss']
 })
 export class PersonBrowserComponent implements OnInit {
+  @ViewChild('details',{static: false}) detailsComponent: PersonDetailComponent;
+
   persons: Person[] = [
     {
       name: 'Joanna Michalik',
@@ -60,12 +63,20 @@ export class PersonBrowserComponent implements OnInit {
     }
   ];
 
-  person: Person = this.persons[2];
+  person: Person = this.persons[0];
 
   constructor() { }
 
   ngOnInit() {
   }
+
+  zmienKolor() {
+    this.detailsComponent.zmienKolor();
+  }
+
+  podkreslenie() {
+    this.detailsComponent.podkreslenie();
+  };
 
   onShift(direction: string) {
     const idx = this.persons.indexOf(this.person);
@@ -75,5 +86,4 @@ export class PersonBrowserComponent implements OnInit {
       this.person = this.persons[idx + 1];
     }
   }
-
 }

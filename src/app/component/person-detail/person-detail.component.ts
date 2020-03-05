@@ -7,7 +7,7 @@ import { Advenced, Person } from 'src/app/model';
   styleUrls: ['./person-detail.component.scss']
 })
 export class PersonDetailComponent implements OnInit, OnDestroy, OnChanges {
-  
+
   @Input() person: Person;
   @Output() shift = new EventEmitter<string>();
 
@@ -42,6 +42,10 @@ export class PersonDetailComponent implements OnInit, OnDestroy, OnChanges {
 
   zmienKolor() {
     this.nameColor = this.nameColor === '#009999' ? 'red' : '#009999';
+  }
+
+  podkreslenie() {
+    this.isActive = !this.isActive;
   }
 
   left() {
