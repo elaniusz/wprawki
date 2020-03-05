@@ -7,6 +7,12 @@ import { AppComponent } from './app.component';
 import { HighlightDirective } from './highlight.directive';
 import { PersonBrowserComponent } from './component/person-browser/person-browser.component';
 import { PersonDetailComponent } from './component/person-detail/person-detail.component';
+import { PersonService } from './person.service';
+import { Config, CONFIG } from './model';
+
+const config: Config = {
+  personLimit: 2
+}
 
 @NgModule({
   declarations: [
@@ -20,7 +26,9 @@ import { PersonDetailComponent } from './component/person-detail/person-detail.c
     AppRoutingModule,
     FormsModule
   ],
-  providers: [],
+  providers: [PersonService,
+    { provide: CONFIG, useValue: config},
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,3 +1,5 @@
+import { InjectionToken } from '@angular/core';
+
 export interface Person {
     name: string;
     photoUrl: string;
@@ -19,3 +21,9 @@ export enum Advenced {
     Sredniozaawansowany,
     Zaawansowany
 }
+
+export interface Config {
+    personLimit: number;
+}
+
+export const CONFIG = new InjectionToken<Config>('app.config');
