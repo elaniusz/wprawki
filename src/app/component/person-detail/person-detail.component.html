@@ -1,11 +1,11 @@
-<div class="container-fluid" *ngIf="person">
+<div class="container-fluid">
     <div style="margin-top: 15px;">
         <div class="card mb-3">
             <div class="row no-gutters">
                 <div class="col-md-10">
                     <div class="card-body">
                         <h5 class="card-title" [style.color]="nameColor" [class.isActive]="isActive">
-                            <button type="button" (click)="left()">&lt;</button>
+                            <button class="btn btn-outline-secondary" type="button" (click)="left()">&lt;</button>
                             {{ person.name.toUpperCase() }}
                             <ng-container [ngSwitch]=person.advenced>
                                 <ng-container *ngSwitchCase="Advenced.Poczatkujacy">*</ng-container>
@@ -13,7 +13,7 @@
                                 <ng-container *ngSwitchCase="Advenced.Zaawansowany">***</ng-container>
                                 <ng-container *ngSwitchDefault>Nieznany typ</ng-container>
                             </ng-container>
-                            <button type="button" (click)="right()">&gt;</button>
+                            <button class="btn btn-outline-secondary" type="button" (click)="right()">&gt;</button>
                         </h5>
                         <p class="card-text" appHighlight>O sobie: {{ person.description}}</p>
                         <p class="card-text">Wiek: {{person.age}}</p>
@@ -36,6 +36,7 @@
                     <div class="checkbox">
                         <label><input type="checkbox" [(ngModel)]="showPhoto"> Pokaz zdjęcie</label>
                     </div>
+                    <p>{{ licznik }}</p>
                 </div>
             </div>
         </div>

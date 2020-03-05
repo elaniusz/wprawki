@@ -8,4 +8,6 @@
     </div>
     
 </div>
+<div *ngIf="person">
 <app-person-detail [person]="person" (shift)="onShift($event )"></app-person-detail>
+</div>
